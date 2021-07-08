@@ -16,38 +16,20 @@ public class TestBoxTests {
   }
 
   @Test
-  void positiveFillTextBoxTest() {
-    open("/text-box");
-    $("#userName").setValue("St");
-    $("#userEmail").setValue("st@qa.ru");
-    $("#currentAddress").setValue("some street 1");
-    $("#permanentAddress").setValue("some street 2");
-
-    $("#submit").click();
-
-    // $x(("//*[contains(text(),'Book Store Application')]")).scrollTo(); ToDo
-
-    $("#name").shouldHave(text("Stanislav"));
-    $("#email").shouldHave(text("stanislav@qa.ru"));
-    $("#currentAddress", 1).shouldHave(text("some street 1"));
-    $("#permanentAddress", 1).shouldHave(text("some street 2"));
-  }
-  @Test
-  void positiveFillTestPracticeFormTest() {
+  void positiveFillTestPracticeFormTest() throws InterruptedException {
     open("/automation-practice-form");
     $("#firstName").setValue("St");
     $("#lastName").setValue("Syn");
-    //male
     $(byText("Male")).click();
     $("#userEmail").setValue("st@qa.ru");
     $("#userNumber").setValue("9011231232");
     $("#currentAddress").setValue("some street 1");
-
-
-    $("#submit").click();
-    $("#submit").click();
-
-
+    $("#submit").scrollTo().click();
+    $("tr:nth-of-type(1) > td:nth-of-type(2)").shouldHave(text("St "+"Syn"));
+    $("tr:nth-of-type(2) > td:nth-of-type(2)").shouldHave(text("st@qa.ru"));
+    $("tr:nth-of-type(3) > td:nth-of-type(2)").shouldHave(text("Male"));
+    $("tr:nth-of-type(4) > td:nth-of-type(2)").shouldHave(text("9011231232"));
+    $("tr:nth-of-type(9) > td:nth-of-type(2)").shouldHave(text("some street 1"));
   }
 
 }
