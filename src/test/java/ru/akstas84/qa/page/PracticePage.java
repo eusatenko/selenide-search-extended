@@ -1,6 +1,8 @@
-package ru.akstas84.qa.Page;
+package ru.akstas84.qa.page;
 
 import com.codeborne.selenide.SelenideElement;
+import ru.akstas84.qa.data.TestData;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -47,13 +49,13 @@ public class PracticePage {
     $("#submit").scrollTo().click();
   }
 
-  public void typeRregistrationDataAndSubmit(String firstName, String lastName, String email, String gender, String phone, String address) {
-    typeFirstName(firstName);
-    typeLastName(lastName);
-    typeEmail(email);
-    selectGeneder(gender);
-    typePhoneNumber(phone);
-    typeCurrentAddress(address);
+  public void typeRregistrationDataAndSubmit(TestData data) {
+    typeFirstName(data.firstName);
+    typeLastName(data.lastName);
+    typeEmail(data.email);
+    selectGeneder(data.gender);
+    typePhoneNumber(data.phone);
+    typeCurrentAddress(data.address);
     clickBySubmit();
   }
 
@@ -61,12 +63,12 @@ public class PracticePage {
     modal.$(".modal-title").shouldHave(text(RESULT_TITLE));
   }
 
-  public void checkResultsValue(String firstName, String lastName, String email, String gender, String phone, String address) {
-    modal.$(".table-responsive").shouldHave(text(firstName));
-    modal.$(".table-responsive").shouldHave(text(lastName));
-    modal.$(".table-responsive").shouldHave(text(email));
-    modal.$(".table-responsive").shouldHave(text(gender));
-    modal.$(".table-responsive").shouldHave(text(phone));
-    modal.$(".table-responsive").shouldHave(text(address));
+  public void checkResultsValue(TestData data) {
+    modal.$(".table-responsive").shouldHave(text(data.firstName));
+    modal.$(".table-responsive").shouldHave(text(data.lastName));
+    modal.$(".table-responsive").shouldHave(text(data.email));
+    modal.$(".table-responsive").shouldHave(text(data.gender));
+    modal.$(".table-responsive").shouldHave(text(data.phone));
+    modal.$(".table-responsive").shouldHave(text(data.address));
   }
 }

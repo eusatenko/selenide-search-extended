@@ -3,12 +3,14 @@ package ru.akstas84.qa;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.akstas84.qa.Page.PracticePage;
-import static Data.TestData.*;
+import ru.akstas84.qa.data.TestData;
+import ru.akstas84.qa.page.PracticePage;
+import static ru.akstas84.qa.data.TestData.*;
 
 public class TestBoxTests {
 
   PracticePage practicePage = new PracticePage();
+  TestData testData = new TestData();
 
   @BeforeAll
   static void setup() {
@@ -19,9 +21,9 @@ public class TestBoxTests {
   @Test
   void positiveFillTestPracticeFormTest() {
     practicePage.openPage();
-    practicePage.typeRregistrationDataAndSubmit(firstName,lastName, email, gender, phone, address );
+    practicePage.typeRregistrationDataAndSubmit(testData);
     practicePage.checkResultsTitle();
-    practicePage.checkResultsValue(firstName,lastName, email, gender, phone, address);
+    practicePage.checkResultsValue(testData);
   }
 
 }

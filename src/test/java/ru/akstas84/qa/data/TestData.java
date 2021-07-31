@@ -1,4 +1,4 @@
-package Data;
+package ru.akstas84.qa.data;
 
 public class TestData {
 
