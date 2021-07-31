@@ -26,7 +26,7 @@ public class PracticePage {
   }
 
   public void typeLastName(String lastName) {
-    $("#lastName").setValue("Syn");
+    $("#lastName").setValue(lastName);
   }
 
   public void selectGeneder(String gender) {
@@ -49,9 +49,9 @@ public class PracticePage {
     $("#submit").scrollTo().click();
   }
 
-  public void typeRregistrationDataAndSubmit(TestData data) {
-    typeFirstName(data.firstName);
-    typeLastName(data.lastName);
+  public void typeRregistrationDataAndSubmit(String firstName, String lastName, TestData data) {
+    typeFirstName(firstName);
+    typeLastName(lastName);
     typeEmail(data.email);
     selectGeneder(data.gender);
     typePhoneNumber(data.phone);
@@ -63,9 +63,9 @@ public class PracticePage {
     modal.$(".modal-title").shouldHave(text(RESULT_TITLE));
   }
 
-  public void checkResultsValue(TestData data) {
-    modal.$(".table-responsive").shouldHave(text(data.firstName));
-    modal.$(".table-responsive").shouldHave(text(data.lastName));
+  public void checkResultsValue(String firstName, String lastName, TestData data) {
+    modal.$(".table-responsive").shouldHave(text(firstName));
+    modal.$(".table-responsive").shouldHave(text(lastName));
     modal.$(".table-responsive").shouldHave(text(data.email));
     modal.$(".table-responsive").shouldHave(text(data.gender));
     modal.$(".table-responsive").shouldHave(text(data.phone));

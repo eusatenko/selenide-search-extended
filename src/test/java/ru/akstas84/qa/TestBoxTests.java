@@ -1,6 +1,7 @@
 package ru.akstas84.qa;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.akstas84.qa.data.TestData;
@@ -11,6 +12,10 @@ public class TestBoxTests {
 
   PracticePage practicePage = new PracticePage();
   TestData testData = new TestData();
+  Faker faker = new Faker();
+
+  String firstName = faker.name().firstName();
+  String lastName = faker.name().lastName();
 
   @BeforeAll
   static void setup() {
@@ -21,9 +26,9 @@ public class TestBoxTests {
   @Test
   void positiveFillTestPracticeFormTest() {
     practicePage.openPage();
-    practicePage.typeRregistrationDataAndSubmit(testData);
+    practicePage.typeRregistrationDataAndSubmit(firstName, lastName, testData);
     practicePage.checkResultsTitle();
-    practicePage.checkResultsValue(testData);
+    practicePage.checkResultsValue(firstName, lastName, testData);
   }
 
 }

@@ -7,5 +7,5 @@ public class TestData {
   public static String email = "st@qa.ru";
   public static String gender = "Male";
   public static String phone = "9011231232";
-  public static  String address = "some street 1";
+  public static String address = "some street 1";
 }
