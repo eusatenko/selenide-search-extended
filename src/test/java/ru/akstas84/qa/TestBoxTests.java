@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.akstas84.qa.Page.PracticePage;
+import static Data.TestData.*;
 
 public class TestBoxTests {
 
@@ -18,10 +19,9 @@ public class TestBoxTests {
   @Test
   void positiveFillTestPracticeFormTest() {
     practicePage.openPage();
-    practicePage.typeRregistrationDataAndSubmit("St", "Syn", "st@qa.ru", "Male", "9011231232", "some street 1");
+    practicePage.typeRregistrationDataAndSubmit(firstName,lastName, email, gender, phone, address );
     practicePage.checkResultsTitle();
-    practicePage.checkResultsValue("St", "Syn", "st@qa.ru", "Male", "9011231232", "some street 1");
-
+    practicePage.checkResultsValue(firstName,lastName, email, gender, phone, address);
   }
 
 }
